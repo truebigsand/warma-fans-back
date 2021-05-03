@@ -10,14 +10,10 @@ flask_cors.CORS(app, supports_credentials=True)
 db = Sqlite3Helper('warma.db')
 
 @app.route('/')
-def index():
-    return "Hello, World!"
-
-@app.route('/api')
 def api():
     return '{"msg":"Welcome to api!"}';
 
-@app.route('/api/all')
+@app.route('/all')
 def all():
     videos = db.query('SELECT * FROM videos')
     if videos == []:
@@ -25,11 +21,11 @@ def all():
     result = {'data':makevideos(videos)}
     return json.dumps(result)#.encode('utf-8').decode('unicode_escape')
 
-@app.route('/api/update')
+@app.route('/update')
 def update():
     return updater.update()
 
-@app.route('/api/search/<string:TYPE>/<string:CONTENT>')
+@app.route('/search/<string:TYPE>/<string:CONTENT>')
 def search(TYPE,CONTENT):
     if ['title','description','author','aid','bvid'].count(TYPE) == 0:
         return '{"msg":"Undefined type ' + TYPE + '"}';
@@ -39,7 +35,7 @@ def search(TYPE,CONTENT):
     result = {'data':makevideos(videos)}
     return json.dumps(result)#.encode('utf-8').decode('unicode_escape')
 
-@app.route('/api/query/<string:command>/<string:password>')
+@app.route('/query/<string:command>/<string:password>')
 def query(command,password):
     if password == '123456':
         return json.dumps(db.query(command))
