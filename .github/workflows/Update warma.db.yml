@@ -24,6 +24,8 @@ jobs:
         pip install pysqlite3
     - name: Clone this repository
       run: |
+        git config --global user.email "3244346642@qq.com"
+        git config --global user.name "truebigsand"
         git clone https://github.com/truebigsand/warma-fans-back.git
     - name: Fetch data from Bilibili and insert to warma.db
       run: |
