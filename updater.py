@@ -6,8 +6,8 @@ def update():
     db = Sqlite3Helper.Sqlite3Helper('warma.db')
     db.execute('DELETE FROM videos WHERE aid > 0')
     uid = "53456"
-    info = json.loads(requests.get('https://api.bilibili.com/x/space/acc/info?mid=53456&jsonp=jsonp').text)
-    videos = []
+    #info = json.loads(requests.get('https://api.bilibili.com/x/space/acc/info?mid=53456&jsonp=jsonp').text)
+    #videos = []
     limit = json.loads(requests.get(f'https://api.bilibili.com/x/space/arc/search?mid={uid}&ps=30&pn=1&jsonp=jsonp').text)['data']['page']['count']
     limit_now = 0
     pageNum = 1
