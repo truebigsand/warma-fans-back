@@ -37,6 +37,7 @@ jobs:
     
     - name: Push to Github
       run: |
-        git add .
+        cd warma-fans-back
+        git add warma.db
         git commit -m 'Update warma.db (auto from Github Actions)'
         git push origin master
