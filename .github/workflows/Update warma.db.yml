@@ -32,6 +32,7 @@ jobs:
     
     - name: Fetch data from Bilibili and insert to warma.db
       run: |
+        cd warma-fans-back
         python updater.py
     
     - name: Push to Github
