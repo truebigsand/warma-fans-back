@@ -27,4 +27,7 @@ jobs:
       
       # Update warma video info
       - name: Update warma video info
-        run: python updater.py
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          python updater.py
