@@ -24,20 +24,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install pysqlite3
     
-    - name: Clone this repository
+    - name: Git set
       run: |
         git config --global user.email "3244346642@qq.com"
         git config --global user.name "truebigsand"
-        git clone https://github.com/truebigsand/warma-fans-back.git
     
     - name: Fetch data from Bilibili and insert to warma.db
       run: |
-        cd warma-fans-back
         python updater.py
     
     - name: Push to Github
       run: |
-        cd warma-fans-back
         git add warma.db
         git commit -m 'Update warma.db (auto from Github Actions)'
         git push -u origin master
