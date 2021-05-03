@@ -19,7 +19,7 @@ def all():
     if videos == []:
         return '{"data":[]}'
     result = {'data':makevideos(videos)}
-    return json.dumps(result)#.encode('utf-8').decode('unicode_escape')
+    return json.dumps(result).encode('utf-8').decode('unicode_escape')
 
 @app.route('/update')
 def update():
@@ -33,7 +33,7 @@ def search(TYPE,CONTENT):
     if videos == []:
         return '{"data":[],"msg":"success"}'
     result = {'data':makevideos(videos)}
-    return json.dumps(result)#.encode('utf-8').decode('unicode_escape')
+    return json.dumps(result).encode('utf-8').decode('unicode_escape')
 
 @app.route('/query/<string:command>/<string:password>')
 def query(command,password):
